@@ -452,9 +452,9 @@ const placementData = [
   {
     company: "Innovaccer",
     type: "SLI + FTE",
-    roles: "",
-    ctc: 11.0,
-    stipend: 0,
+    roles: "data analyst",
+    ctc: 10.0,
+    stipend: 40000,
     placed: 11,
     status: "Completed",
   },
@@ -712,6 +712,7 @@ document.getElementById("sortSelect").addEventListener("change", filterAndSort);
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
 
 
 
