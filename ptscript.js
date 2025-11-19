@@ -345,7 +345,7 @@ const placementData = [
     company: "Samsung Noida",
     type: "SLI",
     roles: "R & D",
-    ctc: 16.4,
+    ctc: 15.5,
     stipend: 50000,
     placed: 6,
     status: "Completed",
@@ -354,7 +354,7 @@ const placementData = [
     company: "Samsung R&D",
     type: "SLI",
     roles: "R & D",
-    ctc: 16.4,
+    ctc: 15.5,
     stipend: 50000,
     placed: 8,
     status: "Completed",
@@ -712,3 +712,4 @@ document.getElementById("sortSelect").addEventListener("change", filterAndSort);
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
