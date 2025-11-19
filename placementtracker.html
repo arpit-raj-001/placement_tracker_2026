@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Placement Tracker 2025</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      header {
+        text-align: center;
+        color: white;
+        margin-bottom: 30px;
+      }
+
+      h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .subtitle {
+        font-size: 1.8em;
+        opacity: 0.9;
+      }
+
+      .dashboard {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .stat-card {
+        background: white;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+      }
+
+      .stat-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .stat-label {
+        font-size: 0.9em;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+      }
+
+      .stat-value {
+        font-size: 2.2em;
+        font-weight: bold;
+        color: #667eea;
+      }
+
+      .odometer-card {
+        background: white;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        text-align: center;
+      }
+
+      .odometer-container {
+        position: relative;
+        width: 200px;
+        height: 120px;
+        margin: 20px auto;
+      }
+
+      .odometer-arc {
+        width: 100%;
+        height: 100%;
+      }
+
+      .odometer-needle {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        width: 4px;
+        height: 80px;
+        background: #333;
+        transform-origin: bottom center;
+        transition: transform 1s ease-out;
+        border-radius: 2px;
+      }
+
+      .odometer-center {
+        position: absolute;
+        bottom: 5px;
+        left: 50%;
+        width: 12px;
+        height: 12px;
+        background: #333;
+        border-radius: 50%;
+        transform: translateX(-50%);
+      }
+
+      .odometer-value {
+        font-size: 2em;
+        font-weight: bold;
+        margin-top: 10px;
+      }
+
+      .table-container {
+        background: white;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        overflow-x: auto;
+      }
+
+      .search-filter {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+
+      .search-input {
+        flex: 1;
+        min-width: 200px;
+        padding: 12px 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 1em;
+        transition: border-color 0.3s ease;
+      }
+
+      .search-input:focus {
+        outline: none;
+        border-color: #667eea;
+      }
+
+      .filter-select {
+        padding: 12px 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 1em;
+        cursor: pointer;
+        background: white;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      thead {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+      }
+
+      th {
+        padding: 15px;
+        text-align: left;
+        font-weight: 600;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      th:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      td {
+        padding: 15px;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      tbody tr {
+        transition: background-color 0.3s ease;
+      }
+
+      tbody tr:hover {
+        background-color: #f8f9ff;
+      }
+
+      .status-badge {
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.85em;
+        font-weight: 600;
+      }
+
+      .status-completed {
+        background-color: #d4edda;
+        color: #155724;
+      }
+
+      .status-pending {
+        background-color: #fff3cd;
+        color: #856404;
+      }
+
+      .ctc-high {
+        color: #28a745;
+        font-weight: bold;
+      }
+
+      .ctc-medium {
+        color: #ffc107;
+        font-weight: bold;
+      }
+
+      .ctc-low {
+        color: #17a2b8;
+        font-weight: bold;
+      }
+
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 1.8em;
+        }
+
+        .stat-value {
+          font-size: 1.8em;
+        }
+
+        table {
+          font-size: 0.9em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🎓 Placement Tracker 2025</h1>
+        <p class="subtitle">LNMIIT Jaipur</p>
+      </header>
+
+      <div class="dashboard">
+        <div class="stat-card">
+          <div class="stat-label">Average CTC Offered</div>
+          <div class="stat-value" id="avgCtc">0 LPA</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-label">Average CTC Secured</div>
+          <div class="stat-value" id="avgCtcSecured">0 LPA</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-label">Median CTC</div>
+          <div class="stat-value" id="medianCtc">0 LPA</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-label">Average Stipend</div>
+          <div class="stat-value" id="avgStipend">₹0K</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-label">Median Stipend</div>
+          <div class="stat-value" id="medianStipend">₹0K</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-label">Students Placed</div>
+          <div class="stat-value" id="studentsPlaced">0 / 490</div>
+        </div>
+
+        <div class="odometer-card">
+          <div class="stat-label">Placement Rate</div>
+          <div class="odometer-container">
+            <svg class="odometer-arc" viewBox="0 0 200 120">
+              <defs>
+                <linearGradient
+                  id="arcGradient"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="0%"
+                >
+                  <stop
+                    offset="0%"
+                    style="stop-color: #dc3545; stop-opacity: 1"
+                  />
+                  <stop
+                    offset="50%"
+                    style="stop-color: #ffc107; stop-opacity: 1"
+                  />
+                  <stop
+                    offset="100%"
+                    style="stop-color: #28a745; stop-opacity: 1"
+                  />
+                </linearGradient>
+              </defs>
+              <path
+                d="M 20 100 A 80 80 0 0 1 180 100"
+                fill="none"
+                stroke="url(#arcGradient)"
+                stroke-width="15"
+                stroke-linecap="round"
+              />
+            </svg>
+            <div class="odometer-needle" id="needle"></div>
+            <div class="odometer-center"></div>
+          </div>
+          <div class="odometer-value" id="placementRate">0%</div>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <h2 style="margin-bottom: 20px; color: #333">Company Details</h2>
+
+        <div class="search-filter">
+          <input
+            type="text"
+            class="search-input"
+            id="searchInput"
+            placeholder="Search by company name..."
+          />
+          <select class="filter-select" id="statusFilter">
+            <option value="all">All Status</option>
+            <option value="Completed">Completed</option>
+            <option value="Pending">Pending</option>
+          </select>
+          <select class="filter-select" id="sortSelect">
+            <option value="ctc-high">Sort by CTC (High to Low)</option>
+            <option value="ctc-low">Sort by CTC (Low to High)</option>
+            <option value="placed">Sort by Students Placed</option>
+            <option value="company">Sort by Company Name</option>
+          </select>
+        </div>
+
+        <table id="placementTable">
+          <thead>
+            <tr>
+              <th onclick="sortTable(0)">S.No</th>
+              <th onclick="sortTable(1)">Company</th>
+              <th onclick="sortTable(2)">Type</th>
+              <th onclick="sortTable(3)">Roles</th>
+              <th onclick="sortTable(4)">CTC (LPA)</th>
+              <th onclick="sortTable(5)">Stipend</th>
+              <th onclick="sortTable(6)">Placed</th>
+              <th onclick="sortTable(7)">Status</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      const placementData = [
+        {
+          company: "Celebal Technologies",
+          type: "SLI + FTE",
+          roles: "Data Science, Data Engineer",
+          ctc: 7.0,
+          stipend: 15000,
+          placed: 8,
+          status: "Completed",
+        },
+        {
+          company: "FreeCharge",
+          type: "SLI + FTE",
+          roles: "Devops, Data engineer, QA, Frontend, Backend",
+          ctc: 7.0,
+          stipend: 25000,
+          placed: 0,
+          status: "Pending",
+        },
+        {
+          company: "Provakil",
+          type: "SLI + FTE",
+          roles: "Associate Software Developer",
+          ctc: 6.5,
+          stipend: 20000,
+          placed: 2,
+          status: "Completed",
+        },
+        {
+          company: "ShodhAI",
+          type: "SLI + FTE",
+          roles: "ML, Fullstack, SRE",
+          ctc: 12.0,
+          stipend: 0,
+          placed: 4,
+          status: "Completed",
+        },
+        {
+          company: "Unicommerce",
+          type: "SLI + FTE",
+          roles: "Enterprise Onboarding Profile",
+          ctc: 5.5,
+          stipend: 25000,
+          placed: 4,
+          status: "Completed",
+        },
+        {
+          company: "Nagarro Software",
+          type: "SLI + FTE",
+          roles: "Full Stack Developer",
+          ctc: 7.0,
+          stipend: 30000,
+          placed: 4,
+          status: "Completed",
+        },
+        {
+          company: "TITAN.email",
+          type: "SLI + FTE",
+          roles: "SDE",
+          ctc: 25.0,
+          stipend: 100000,
+          placed: 0,
+          status: "Completed",
+        },
+        {
+          company: "Treebo Hotels",
+          type: "SLI + FTE",
+          roles: "Backend Developer",
+          ctc: 12.5,
+          stipend: 25000,
+          placed: 2,
+          status: "Completed",
+        },
+        {
+          company: "Treebo Hotels",
+          type: "SLI + FTE",
+          roles: "SDET",
+          ctc: 9.5,
+          stipend: 15000,
+          placed: 1,
+          status: "Completed",
+        },
+        {
+          company: "Treebo Hotels",
+          type: "SLI + FTE",
+          roles: "SRE",
+          ctc: 7.0,
+          stipend: 15000,
+          placed: 1,
+          status: "Completed",
+        },
+        {
+          company: "Spring Financial",
+          type: "SLI + FTE",
+          roles: "Software Engineer Trainee",
+          ctc: 12.0,
+          stipend: 25000,
+          placed: 3,
+          status: "Completed",
+        },
+        {
+          company: "APMSE(Eagleview)",
+          type: "SLI + FTE",
+          roles: "SDE",
+          ctc: 12.84,
+          stipend: 50000,
+          placed: 7,
+          status: "Completed",
+        },
+        {
+          company: "ZS Associates",
+          type: "SLI + FTE",
+          roles: "Software Developer, Business Analyst, DAA",
+          ctc: 14.15,
+          stipend: 0,
+          placed: 23,
+          status: "Completed",
+        },
+        {
+          company: "DEShaw",
+          type: "SLI + FTE",
+          roles: "SDE",
+          ctc: 59.3,
+          stipend: 150000,
+          placed: 3,
+          status: "Completed",
+        },
+        {
+          company: "EPAM",
+          type: "SLI + FTE",
+          roles: "Tech Role",
+          ctc: 8.48,
+          stipend: 27500,
+          placed: 3,
+          status: "Completed",
+        },
+        {
+          company: "ProcDNA",
+          type: "SLI + FTE",
+          roles: "Business Analyst, Data Science",
+          ctc: 16.74,
+          stipend: 25000,
+          placed: 2,
+          status: "Completed",
+        },
+        {
+          company: "Media.net",
+          type: "SLI",
+          roles: "SDE",
+          ctc: 39.3,
+          stipend: 100000,
+          placed: 2,
+          status: "Completed",
+        },
+        {
+          company: "Triology",
+          type: "FTE",
+          roles: "SDE",
+          ctc: 32.5,
+          stipend: 0,
+          placed: 0,
+          status: "Completed",
+        },
+        {
+          company: "E2E Networks",
+          type: "SLI + FTE",
+          roles: "Associate Software Engineer",
+          ctc: 13.0,
+          stipend: 48200,
+          placed: 5,
+          status: "Completed",
+        },
+        {
+          company: "Tekion",
+          type: "SLI + FTE",
+          roles: "Associate Software Engineer",
+          ctc: 21.0,
+          stipend: 65000,
+          placed: 5,
+          status: "Completed",
+        },
+        {
+          company: "Signzy",
+          type: "SLI + PPO",
+          roles: "MERN Stack Intern",
+          ctc: 0,
+          stipend: 40000,
+          placed: 0,
+          status: "Completed",
+        },
+        {
+          company: "Whatfix(Quiko)",
+          type: "SLI + FTE",
+          roles: "Software Engineer",
+          ctc: 16.0,
+          stipend: 50000,
+          placed: 4,
+          status: "Completed",
+        },
+        {
+          company: "Eatclub",
+          type: "SLI + FTE",
+          roles: "SDE",
+          ctc: 22.0,
+          stipend: 40000,
+          placed: 5,
+          status: "Completed",
+        },
+        {
+          company: "MakeMyTrip",
+          type: "SLI + FTE",
+          roles: "Software Engineer",
+          ctc: 22.0,
+          stipend: 50000,
+          placed: 2,
+          status: "Completed",
+        },
+        {
+          company: "Sprinklr",
+          type: "SLI + FTE",
+          roles: "Cloud Engineer",
+          ctc: 18.0,
+          stipend: 50000,
+          placed: 2,
+          status: "Completed",
+        },
+        {
+          company: "Addverb Technologies",
+          type: "SLI + FTE",
+          roles: "Software Developer, Mobile Robotics",
+          ctc: 16.0,
+          stipend: 25000,
+          placed: 7,
+          status: "Completed",
+        },
+        {
+          company: "Triumph Motorcycles",
+          type: "SLI + FTE",
+          roles: "Graduate Engineer Trainee",
+          ctc: 12.5,
+          stipend: 50000,
+          placed: 4,
+          status: "Completed",
+        },
+        {
+          company: "Bajaj Finserv Health",
+          type: "SLI + PPO",
+          roles: "Backend Developer(Java)",
+          ctc: 12.2,
+          stipend: 35000,
+          placed: 2,
+          status: "Completed",
+        },
+
+        {
+          company: "BNY Mellon",
+          type: "Intern + PPO",
+          roles: "SDE",
+          ctc: 22.0,
+          stipend: 75000,
+          placed: 4,
+          status: "Completed",
+        },
+        {
+          company: "Deloitte",
+          type: "Intern + PPO",
+          roles: "Product Engineer, DataScience, UI/UX",
+          ctc: 12.5,
+          stipend: 30000,
+          placed: 21,
+          status: "Completed",
+        },
+        {
+          company: "OneBanc",
+          type: "SLI+FTE",
+          roles: "Android, IOS, Full Stack, UI/UX",
+          ctc: 12.0,
+          stipend: 40000,
+          placed: 1,
+          status: "Completed",
+        },
+        {
+          company: "Curiflow",
+          type: "SLI+FTE",
+          roles: "Frontend Developer, SDE",
+          ctc: 15.0,
+          stipend: 60000,
+          placed: 3,
+          status: "Completed",
+        },
+        {
+          company: "Aperam",
+          type: "SLI + FTE",
+          roles: "AI & Automation, Data Engineer",
+          ctc: 11.5,
+          stipend: 30000,
+          placed: 5,
+          status: "Completed",
+        },
+        {
+          company: "AMD",
+          type: "SLI + FTE",
+          roles: "Software and Hardware Engineer",
+          ctc: 26.1,
+          stipend: 50000,
+          placed: 0,
+          status: "Pending",
+        },
+        {
+          company: "GoDaddy",
+          type: "SLI + FTE",
+          roles: "Product Manager",
+          ctc: 28.5,
+          stipend: 40000,
+          placed: 1,
+          status: "Completed",
+        },
+        {
+          company: "HSBC",
+          type: "FTE",
+          roles: "Trainee Software Engineer",
+          ctc: 16.43,
+          stipend: 0,
+          placed: 0,
+          status: "Pending",
+        },
+        {
+          company: "Samsung Noida",
+          type: "SLI",
+          roles: "R & D",
+          ctc: 16.4,
+          stipend: 50000,
+          placed: 8,
+          status: "Completed",
+        },
+        {
+          company: "Media.net",
+          type: "SLI",
+          roles: "SRE",
+          ctc: 15.7,
+          stipend: 100000,
+          placed: 1,
+          status: "completed",
+        },
+        {
+          company: "Josh Technology Group",
+          type: "SLI + FTE",
+          roles: "Associate Software Developer",
+          ctc: 10.78,
+          stipend: 22500,
+          placed: 0,
+          status: "Pending",
+        },
+        {
+          company: "Josh Technology Group",
+          type: "SLI + FTE",
+          roles: "Software Quality Analyst",
+          ctc: 5.39,
+          stipend: 20000,
+          placed: 0,
+          status: "Pending",
+        },
+        {
+          company: "Park+",
+          type: "SLI + FTE",
+          roles: "SDE - 1 Backend",
+          ctc: 30.0,
+          stipend: 30000,
+          placed: 0,
+          status: "Pending",
+        },
+        {
+          company: "Eucloid",
+          type: "Intern",
+          roles: "Data Solutions Associate Intern",
+          ctc: 8.5,
+          stipend: 35000,
+          placed: 0,
+          status: "Pending",
+        },
+        {
+          company: "ION",
+          type: "FTE",
+          roles: "SDE, Data Scientist, Tech-Analyst",
+          ctc: 17.3,
+          stipend: 0,
+          placed: 1,
+          status: "Completed",
+        },
+        {
+          company: "rtCamp",
+          type: "Intern + FTE",
+          roles: "Associate Software Engineer",
+          ctc: 13.0,
+          stipend: 25000,
+          placed: 0,
+          status: "Completed",
+        },
+        {
+          company: "Honda Cars",
+          type: "SLI + FTE",
+          roles: "Graduate Engineer Trainee",
+          ctc: 6.0,
+          stipend: 20000,
+          placed: 1,
+          status: "Completed",
+        },
+        {
+          company: "Manthan",
+          type: "SLI + FTE",
+          roles: "",
+          ctc: 0,
+          stipend: 0,
+          placed: 5,
+          status: "Completed",
+        },
+        {
+          company: "MAVQ",
+          type: "SLI + FTE",
+          roles: "",
+          ctc: 14.3,
+          stipend: 0,
+          placed: 5,
+          status: "Completed",
+        },
+        {
+          company: "Innovaccer",
+          type: "SLI + FTE",
+          roles: "",
+          ctc: 11.0,
+          stipend: 0,
+          placed: 11,
+          status: "Completed",
+        },
+        {
+          company: "Dell (Off-Campus)",
+          type: "FTE",
+          roles: "SDE",
+          ctc: 13.6,
+          stipend: 0,
+          placed: 1,
+          status: "Completed",
+        },
+        {
+          company: "Swiggy (Off-Campus)",
+          type: "FTE",
+          roles: "ASDE",
+          ctc: 10.0,
+          stipend: 0,
+          placed: 1,
+          status: "Completed",
+        },
+        {
+          company: "Kaabil Tech",
+          type: "SLI + FTE",
+          roles: "",
+          ctc: 0,
+          stipend: 0,
+          placed: 0,
+          status: "Pending",
+        },
+        {
+          company: "Hacken",
+          type: "SLI + FTE",
+          roles: "",
+          ctc: 0,
+          stipend: 0,
+          placed: 0,
+          status: "Pending",
+        },
+        {
+          company: "BTC",
+          type: "SLI + FTE",
+          roles: "AI engineer",
+          ctc: 7.21,
+          stipend: 25000,
+          placed: 0,
+          status: "Pending",
+        },
+        {
+          company: "Axestrack",
+          type: "SLI + FTE",
+          roles: "",
+          ctc: 0,
+          stipend: 0,
+          placed: 0,
+          status: "Pending",
+        },
+      ];
+
+      function calculateStats() {
+        // Filter only completed placements with valid CTC
+        const validCtc = placementData.filter((item) => item.ctc > 0);
+        const ctcValues = validCtc
+          .map((item) => item.ctc)
+          .sort((a, b) => a - b);
+
+        // Calculate average CTC offered (simple average of all CTCs)
+        const avgCtc =
+          ctcValues.reduce((sum, val) => sum + val, 0) / ctcValues.length;
+
+        // Calculate average CTC secured (weighted by number of students placed)
+        const placedWithCtc = placementData.filter(
+          (item) => item.ctc > 0 && item.placed > 0
+        );
+        const totalCtcWeighted = placedWithCtc.reduce(
+          (sum, item) => sum + item.ctc * item.placed,
+          0
+        );
+        const totalStudentsPlaced = placedWithCtc.reduce(
+          (sum, item) => sum + item.placed,
+          0
+        );
+        const avgCtcSecured =
+          totalStudentsPlaced > 0 ? totalCtcWeighted / totalStudentsPlaced : 0;
+
+        // Calculate median CTC
+        const mid = Math.floor(ctcValues.length / 2);
+        const medianCtc =
+          ctcValues.length % 2 === 0
+            ? (ctcValues[mid - 1] + ctcValues[mid]) / 2
+            : ctcValues[mid];
+
+        // Filter valid stipends (non-zero)
+        const validStipends = placementData.filter((item) => item.stipend > 0);
+        const stipendValues = validStipends
+          .map((item) => item.stipend)
+          .sort((a, b) => a - b);
+
+        // Calculate average stipend
+        const avgStipend =
+          stipendValues.reduce((sum, val) => sum + val, 0) /
+          stipendValues.length;
+
+        // Calculate median stipend
+        const midStipend = Math.floor(stipendValues.length / 2);
+        const medianStipend =
+          stipendValues.length % 2 === 0
+            ? (stipendValues[midStipend - 1] + stipendValues[midStipend]) / 2
+            : stipendValues[midStipend];
+
+        return {
+          avgCtc: avgCtc.toFixed(2),
+          avgCtcSecured: avgCtcSecured.toFixed(2),
+          medianCtc: medianCtc.toFixed(2),
+          avgStipend: (avgStipend / 1000).toFixed(1),
+          medianStipend: (medianStipend / 1000).toFixed(1),
+        };
+      }
+
+      function renderTable(data) {
+        const tbody = document.getElementById("tableBody");
+        tbody.innerHTML = "";
+
+        data.forEach((item, index) => {
+          const row = document.createElement("tr");
+
+          let ctcClass = "ctc-low";
+          if (item.ctc > 8) ctcClass = "ctc-high";
+          else if (item.ctc > 5) ctcClass = "ctc-medium";
+
+          const ctcDisplay = item.ctc > 0 ? `₹${item.ctc.toFixed(2)}` : "N/A";
+          const stipendDisplay =
+            item.stipend > 0 ? `₹${(item.stipend / 1000).toFixed(0)}K` : "N/A";
+
+          row.innerHTML = `
+                    <td><strong>${index + 1}</strong></td>
+                    <td><strong>${item.company}</strong></td>
+                    <td>${item.type}</td>
+                    <td>${item.roles}</td>
+                    <td class="${ctcClass}">${ctcDisplay}</td>
+                    <td>${stipendDisplay}</td>
+                    <td><strong>${item.placed}</strong></td>
+                    <td><span class="status-badge status-${item.status.toLowerCase()}">${
+            item.status
+          }</span></td>
+                `;
+          tbody.appendChild(row);
+        });
+      }
+
+      function updateDashboard() {
+        const stats = calculateStats();
+
+        document.getElementById("avgCtc").textContent = `${stats.avgCtc} LPA`;
+        document.getElementById(
+          "avgCtcSecured"
+        ).textContent = `${stats.avgCtcSecured} LPA`;
+        document.getElementById(
+          "medianCtc"
+        ).textContent = `${stats.medianCtc} LPA`;
+        document.getElementById(
+          "avgStipend"
+        ).textContent = `₹${stats.avgStipend}K`;
+        document.getElementById(
+          "medianStipend"
+        ).textContent = `₹${stats.medianStipend}K`;
+
+        const completedPlacements = placementData.filter(
+          (item) => item.status === "Completed"
+        );
+        const totalPlaced = completedPlacements.reduce(
+          (sum, item) => sum + item.placed,
+          0
+        );
+        const placementPercentage = ((totalPlaced / 490) * 100).toFixed(2);
+
+        document.getElementById(
+          "studentsPlaced"
+        ).textContent = `${totalPlaced} / 490`;
+        document.getElementById(
+          "placementRate"
+        ).textContent = `${placementPercentage}%`;
+
+        const needleRotation =
+          (parseFloat(placementPercentage) / 100) * 180 - 90;
+        document.getElementById(
+          "needle"
+        ).style.transform = `translateX(-50%) rotate(${needleRotation}deg)`;
+
+        const percentage = parseFloat(placementPercentage);
+        const odometerValue = document.getElementById("placementRate");
+        if (percentage < 40) {
+          odometerValue.style.color = "#dc3545";
+        } else if (percentage < 70) {
+          odometerValue.style.color = "#ff9800";
+        } else {
+          odometerValue.style.color = "#28a745";
+        }
+      }
+
+      function filterAndSort() {
+        let filteredData = [...placementData];
+
+        const searchTerm = document
+          .getElementById("searchInput")
+          .value.toLowerCase();
+        if (searchTerm) {
+          filteredData = filteredData.filter((item) =>
+            item.company.toLowerCase().includes(searchTerm)
+          );
+        }
+
+        const statusFilter = document.getElementById("statusFilter").value;
+        if (statusFilter !== "all") {
+          filteredData = filteredData.filter(
+            (item) => item.status === statusFilter
+          );
+        }
+
+        const sortType = document.getElementById("sortSelect").value;
+        switch (sortType) {
+          case "ctc-high":
+            filteredData.sort((a, b) => b.ctc - a.ctc);
+            break;
+          case "ctc-low":
+            filteredData.sort((a, b) => a.ctc - b.ctc);
+            break;
+          case "placed":
+            filteredData.sort((a, b) => b.placed - a.placed);
+            break;
+          case "company":
+            filteredData.sort((a, b) => a.company.localeCompare(b.company));
+            break;
+        }
+
+        renderTable(filteredData);
+      }
+
+      document
+        .getElementById("searchInput")
+        .addEventListener("input", filterAndSort);
+      document
+        .getElementById("statusFilter")
+        .addEventListener("change", filterAndSort);
+      document
+        .getElementById("sortSelect")
+        .addEventListener("change", filterAndSort);
+
+      // Sort by CTC (high to low) by default
+      placementData.sort((a, b) => b.ctc - a.ctc);
+      renderTable(placementData);
+      updateDashboard();
+    </script>
+  </body>
+</html>
