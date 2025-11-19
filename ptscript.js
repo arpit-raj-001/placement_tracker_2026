@@ -9,6 +9,24 @@ const placementData = [
     status: "Completed",
   },
   {
+    company: "Ador",
+    type: "FTE",
+    roles: "core engineer",
+    ctc: 9.0,
+    stipend: 0,
+    placed: 2,
+    status: "Completed",
+  },
+  {
+    company: "jio (off)",
+    type: "FTE",
+    roles: "SDE",
+    ctc: 15,
+    stipend: 0,
+    placed: 1,
+    status: "Completed",
+  },
+  {
     company: "FreeCharge",
     type: "SLI + FTE",
     roles: "Devops, Data engineer, QA, Frontend, Backend",
@@ -712,6 +730,7 @@ document.getElementById("sortSelect").addEventListener("change", filterAndSort);
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
 
 
 
