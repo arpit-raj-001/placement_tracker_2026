@@ -436,7 +436,7 @@ const placementData = [
     type: "SLI + FTE",
     roles: "",
     ctc: 7,
-    stipend: 25,
+    stipend: 25000,
     placed: 5,
     status: "Completed",
   },
@@ -712,4 +712,5 @@ document.getElementById("sortSelect").addEventListener("change", filterAndSort);
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
 
