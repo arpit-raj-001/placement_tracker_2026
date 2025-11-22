@@ -527,7 +527,7 @@ const placementData = [
     roles: "unknown",
     ctc: 12,
     stipend: 35000,
-    placed: 1,
+    placed: 2,
     status: "completed",
   },
   {
@@ -748,6 +748,7 @@ document.getElementById("sortSelect").addEventListener("change", filterAndSort);
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
 
 
 
