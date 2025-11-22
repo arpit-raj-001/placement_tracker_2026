@@ -411,7 +411,7 @@ const placementData = [
     ctc: 10.78,
     stipend: 22500,
     placed: 0,
-    status: "Pending",
+    status: "Completed",
   },
   {
     company: "Josh Technology Group",
@@ -420,7 +420,7 @@ const placementData = [
     ctc: 5.39,
     stipend: 20000,
     placed: 0,
-    status: "Pending",
+    status: "Completed",
   },
   {
     company: "Park+",
@@ -748,6 +748,7 @@ document.getElementById("sortSelect").addEventListener("change", filterAndSort);
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
 
 
 
