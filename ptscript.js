@@ -521,14 +521,14 @@ const placementData = [
     placed: 6,
     status: "Completed",
   },
-  {
-    company: "Hacken",
+   {
+    company: "BTC",
     type: "SLI + FTE",
-    roles: "unknown",
-    ctc: 12,
+    roles: "not known yet",
+    ctc: 12.00,
     stipend: 35000,
-    placed: 2,
-    status: "completed",
+    placed: 1,
+    status: "Completed",
   },
   {
     company: "BTC",
@@ -748,6 +748,7 @@ document.getElementById("sortSelect").addEventListener("change", filterAndSort);
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
 
 
 
