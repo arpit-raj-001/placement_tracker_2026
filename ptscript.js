@@ -9,6 +9,24 @@ const placementData = [
     status: "Completed",
   },
   {
+    company: "deloitte",
+    type: "FTE",
+    roles: "mendix developer",
+    ctc: 7.6,
+    stipend: 0,
+    placed: 0,
+    status: "Pending",
+  },
+  {
+    company: "blogvault",
+    type: "SLI+FTE",
+    roles: "SDE",
+    ctc: 12,
+    stipend: 30000,
+    placed: 0,
+    status: "Pending",
+  },
+  {
     company: "NAV",
     type: "SLI + FTE",
     roles: "SWE",
@@ -536,8 +554,8 @@ const placementData = [
     roles: "AI engineer",
     ctc: 7.21,
     stipend: 25000,
-    placed: 0,
-    status: "Pending",
+    placed: 1,
+    status: "Completed",
   },
   {
     company: "Axestrack",
@@ -748,6 +766,7 @@ document.getElementById("sortSelect").addEventListener("change", filterAndSort);
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
 
 
 
