@@ -18,6 +18,51 @@ const placementData = [
     status: "Pending",
   },
   {
+    company: "deloitte",
+    type: "FTE",
+    roles: "mendix developer",
+    ctc: 7.6,
+    stipend: 0,
+    placed: 0,
+    status: "Pending",
+  },
+  {
+    company: "miimansa systems",
+    type: "SLI+FTE",
+    roles: "NLP intern",
+    ctc: 12,
+    stipend: 35000,
+    placed: 0,
+    status: "Pending",
+  },
+  {
+    company: "mamaearth",
+    type: "FTE",
+    roles: "analyst",
+    ctc: 12,
+    stipend: 0,
+    placed: 0,
+    status: "Pending",
+  },
+  {
+    company: "unicommerce",
+    type: "SLI+FTE",
+    roles: "SWE",
+    ctc: 15,
+    stipend: 30000,
+    placed: 0,
+    status: "Pending",
+  },
+  {
+    company: "serent corporation",
+    type: "SLI+FTE",
+    roles: "NLP intern",
+    ctc: 12,
+    stipend: 40000,
+    placed: 0,
+    status: "Pending",
+  },
+  {
     company: "blogvault",
     type: "SLI+FTE",
     roles: "SDE",
@@ -766,6 +811,7 @@ document.getElementById("sortSelect").addEventListener("change", filterAndSort);
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
 
 
 
