@@ -412,7 +412,7 @@ const placementData = [
     ctc: 26.1,
     stipend: 50000,
     placed: 0,
-    status: "Pending",
+    status: "Completed",
   },
   {
     company: "GoDaddy",
@@ -430,7 +430,7 @@ const placementData = [
     ctc: 16.43,
     stipend: 0,
     placed: 0,
-    status: "Pending",
+    status: "Completed",
   },
   {
     company: "Samsung Noida",
@@ -803,6 +803,7 @@ document.getElementById("sortSelect").addEventListener("change", filterAndSort);
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
 
 
 
