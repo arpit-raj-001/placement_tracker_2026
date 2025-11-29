@@ -738,7 +738,7 @@ function updateDashboard() {
 
   document.getElementById(
     "studentsPlaced"
-  ).textContent = `${totalPlaced+3} / 490`;
+  ).textContent = `${totalPlaced+31} / 490`;
   document.getElementById(
     "placementRate"
   ).textContent = `${placementPercentage}%`;
@@ -803,6 +803,7 @@ document.getElementById("sortSelect").addEventListener("change", filterAndSort);
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
 
 
 
