@@ -24,8 +24,8 @@ const placementData = [
     roles: "NLP intern",
     ctc: 12,
     stipend: 35000,
-    placed: 0,
-    status: "Pending",
+    placed: 6,
+    status: "Completed",
   },
   {
     company: "mamaearth",
@@ -51,7 +51,7 @@ const placementData = [
     roles: "NLP intern",
     ctc: 12,
     stipend: 40000,
-    placed: 3,
+    placed: 11,
     status: "Completed",
   },
   {
@@ -803,6 +803,7 @@ document.getElementById("sortSelect").addEventListener("change", filterAndSort);
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
 
 
 
