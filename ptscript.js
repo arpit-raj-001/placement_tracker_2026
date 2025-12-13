@@ -33,8 +33,8 @@ const placementData = [
     roles: "analyst",
     ctc: 12,
     stipend: 25000,
-    placed: 0,
-    status: "Pending",
+    placed: 3,
+    status: "Completed",
   },
   {
     company: "unicommerce",
@@ -51,8 +51,8 @@ const placementData = [
     roles: "NLP intern",
     ctc: 12,
     stipend: 40000,
-    placed: 0,
-    status: "Pending",
+    placed: 3,
+    status: "Completed",
   },
   {
     company: "blogvault",
@@ -105,8 +105,8 @@ const placementData = [
     roles: "Devops, Data engineer, QA, Frontend, Backend",
     ctc: 7.0,
     stipend: 25000,
-    placed: 0,
-    status: "Pending",
+    placed: 9,
+    status: "Completed",
   },
   {
     company: "Provakil",
@@ -803,6 +803,7 @@ document.getElementById("sortSelect").addEventListener("change", filterAndSort);
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
 
 
 
