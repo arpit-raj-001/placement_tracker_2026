@@ -79,7 +79,7 @@ const placementData = [
     ctc: 12,
     stipend: 30000,
     placed: 0,
-    status: "BLACKLISTEd",
+    status: "BLACKLISTED",
   },
   {
     company: "NAV",
@@ -972,6 +972,7 @@ btn.addEventListener("mouseleave", function () {
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
 
 
 
