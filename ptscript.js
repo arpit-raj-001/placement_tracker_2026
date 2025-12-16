@@ -761,7 +761,7 @@ function updateDashboard() {
     (sum, item) => sum + item.placed,
     0
   );
-  const placementPercentage = (((totalPlaced + 31) / 490) * 100).toFixed(2);
+  const placementPercentage = (((totalPlaced + 26) / 490) * 100).toFixed(2);
 
   document.getElementById("studentsPlaced").textContent = `${
     totalPlaced + 31
@@ -1037,6 +1037,7 @@ btn.addEventListener("mouseleave", function () {
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
 
 
 
