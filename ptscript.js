@@ -375,7 +375,16 @@ const placementData = [
     roles: "Backend Developer(Java)",
     ctc: 12.2,
     stipend: 35000,
-    placed: 2,
+    placed: 3,
+    status: "Completed",
+  },
+  {
+    company: "Flipkart",
+    type: "SLI + FTE",
+    roles: "supply chain",
+    ctc: 14.5,
+    stipend: 50000,
+    placed: 3,
     status: "Completed",
   },
   {
@@ -391,9 +400,9 @@ const placementData = [
     company: "Deloitte",
     type: "Intern + PPO",
     roles: "Product Engineer, DataScience, UI/UX",
-    ctc: 12.5,
+    ctc: 12.64,
     stipend: 30000,
-    placed: 18,
+    placed: 16,
     status: "Completed",
   },
   {
@@ -900,6 +909,20 @@ const changelogData = [
           
         ],
       },
+      {
+        company: "DELOITTE",
+        changes: [
+         
+          
+          {
+            type: "update",
+            description: "students selected",
+            oldValue: 18,
+            newValue: 16,
+          },
+          { type: "completed", description: "Process completed successfully" },
+        ],
+      },
     ],
   },
 ];
@@ -1014,6 +1037,7 @@ btn.addEventListener("mouseleave", function () {
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
 
 
 
