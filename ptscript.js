@@ -8,7 +8,16 @@ const placementData = [
     placed: 11,
     status: "Completed",
   },
-  
+  {
+    company: "Flexport",
+    type: "SLI",
+    roles: "SDE",
+    ctc: 63,
+    stipend: 125000,
+    placed: 2,
+    status: "Completed",
+  },
+
   {
     company: "deloitte",
     type: "FTE",
@@ -576,11 +585,11 @@ const placementData = [
     placed: 6,
     status: "Completed",
   },
-   {
+  {
     company: "BTC",
     type: "SLI + FTE",
     roles: "not known yet",
-    ctc: 12.00,
+    ctc: 12.0,
     stipend: 35000,
     placed: 1,
     status: "Completed",
@@ -736,9 +745,9 @@ function updateDashboard() {
   );
   const placementPercentage = (((totalPlaced + 31) / 490) * 100).toFixed(2);
 
-  document.getElementById(
-    "studentsPlaced"
-  ).textContent = `${totalPlaced+31} / 490`;
+  document.getElementById("studentsPlaced").textContent = `${
+    totalPlaced + 31
+  } / 490`;
   document.getElementById(
     "placementRate"
   ).textContent = `${placementPercentage}%`;
@@ -799,26 +808,137 @@ document
   .addEventListener("change", filterAndSort);
 document.getElementById("sortSelect").addEventListener("change", filterAndSort);
 
-// Sort by CTC (high to low) by default
+// changing array
+const changelogData = [
+  {
+    date: "2024-12-17",
+    entries: [
+      {
+        company: "Flexport",
+        changes: [
+          { type: "new", description: "Company added to placement drive" },
+          { type: "update", description: "CTC offered", value: "63 LPA" },
+          {
+            type: "update",
+            description: "Students selected",
+            oldValue: 0,
+            newValue: 2,
+          },
+          { type: "completed", description: "Process completed successfully" },
+        ],
+      },
+    ],
+  },
+];
+
+// Changelog rendering function
+function renderChangelog() {
+  const changelogBody = document.getElementById("changelogBody");
+
+  if (changelogData.length === 0) {
+    changelogBody.innerHTML =
+      '<div class="no-changelog">📝 No changes recorded yet</div>';
+    return;
+  }
+
+  let html = "";
+
+  changelogData.forEach((dateEntry) => {
+    dateEntry.entries.forEach((entry) => {
+      html += `
+        <div class="changelog-entry">
+          <div class="changelog-date">
+            <span>🗓️</span>
+            <span>${formatDate(dateEntry.date)}</span>
+          </div>
+          <div class="changelog-company">${entry.company}</div>
+          <div class="changelog-changes">
+      `;
+
+      entry.changes.forEach((change) => {
+        let badgeClass = "";
+        let icon = "";
+        let changeText = "";
+
+        switch (change.type) {
+          case "new":
+            badgeClass = "badge-new";
+            icon = "✨";
+            changeText = change.description;
+            break;
+          case "update":
+            badgeClass = "badge-update";
+            icon = "🔄";
+            if (
+              change.oldValue !== undefined &&
+              change.newValue !== undefined
+            ) {
+              changeText = `${change.description}: <span class="value-change">${change.oldValue} → ${change.newValue}</span>`;
+            } else if (change.value !== undefined) {
+              changeText = `${change.description}: <span class="value-change">${change.value}</span>`;
+            } else {
+              changeText = change.description;
+            }
+            break;
+          case "completed":
+            badgeClass = "badge-completed";
+            icon = "✅";
+            changeText = change.description;
+            break;
+        }
+
+        html += `
+          <div class="change-item">
+            <span class="change-badge ${badgeClass}">${icon} ${change.type.toUpperCase()}</span>
+            <span>${changeText}</span>
+          </div>
+        `;
+      });
+
+      html += `
+          </div>
+        </div>
+      `;
+    });
+  });
+
+  changelogBody.innerHTML = html;
+}
+
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  return date.toLocaleDateString("en-US", options);
+}
+
+// Modal functionality
+const modal = document.getElementById("changelogModal");
+const btn = document.getElementById("changelogBtn");
+const span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function () {
+  modal.style.display = "block";
+  renderChangelog();
+};
+
+span.onclick = function () {
+  modal.style.display = "none";
+};
+
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
+
+btn.addEventListener("mouseenter", function () {
+  this.style.transform = "translateY(-2px)";
+});
+
+btn.addEventListener("mouseleave", function () {
+  this.style.transform = "translateY(0)";
+});
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
