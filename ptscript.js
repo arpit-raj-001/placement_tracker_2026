@@ -90,15 +90,7 @@ const placementData = [
     placed: 3,
     status: "Completed",
   },
-  {
-    company: "Amazon (off)",
-    type: "SLI + FTE",
-    roles: "SDE",
-    ctc: 45.0,
-    stipend: 110000,
-    placed: 1,
-    status: "Completed",
-  },
+  
   {
     company: "Ador",
     type: "FTE",
@@ -108,15 +100,7 @@ const placementData = [
     placed: 2,
     status: "Completed",
   },
-  {
-    company: "jio (off)",
-    type: "FTE",
-    roles: "SDE",
-    ctc: 15,
-    stipend: 0,
-    placed: 1,
-    status: "Completed",
-  },
+  
   {
     company: "FreeCharge",
     type: "SLI + FTE",
@@ -576,24 +560,8 @@ const placementData = [
     placed: 11,
     status: "Completed",
   },
-  {
-    company: "Dell (Off-Campus)",
-    type: "FTE",
-    roles: "SDE",
-    ctc: 13.6,
-    stipend: 0,
-    placed: 1,
-    status: "Completed",
-  },
-  {
-    company: "Swiggy (Off-Campus)",
-    type: "FTE",
-    roles: "ASDE",
-    ctc: 10.0,
-    stipend: 0,
-    placed: 1,
-    status: "Completed",
-  },
+ 
+  
   {
     company: "Kaabil Tech",
     type: "SLI + FTE",
@@ -1037,6 +1005,7 @@ btn.addEventListener("mouseleave", function () {
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
 
 
 
