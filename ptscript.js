@@ -858,8 +858,8 @@ const changelogData = [
           {
             type: "update",
             description: "CTC update",
-            oldValue: 12,
-            newValue: 15,
+            oldValue: "12 LPA",
+            newValue: "15 LPA",
           },
           { type: "completed", description: "Process completed successfully" },
         ],
@@ -872,8 +872,8 @@ const changelogData = [
           {
             type: "update",
             description: "CTC update",
-            oldValue: 15.7,
-            newValue: 14.5,
+            oldValue: "15.7 LPA",
+            newValue: "14.5 LPA",
           },
           { type: "completed", description: "Process completed successfully" },
         ],
@@ -1014,6 +1014,7 @@ btn.addEventListener("mouseleave", function () {
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
 
 
 
