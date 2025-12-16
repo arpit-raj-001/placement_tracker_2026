@@ -79,7 +79,7 @@ const placementData = [
     ctc: 12,
     stipend: 30000,
     placed: 0,
-    status: "Pending",
+    status: "BLACKLISTEd",
   },
   {
     company: "NAV",
@@ -850,6 +850,14 @@ const changelogData = [
           { type: "completed", description: "Process completed successfully" },
         ],
       },
+      {
+        company: "Blogvault",
+        changes: [
+          { type: "new", description: "company blacklisted us" },
+          
+          
+        ],
+      },
     ],
   },
 ];
@@ -964,5 +972,6 @@ btn.addEventListener("mouseleave", function () {
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
 
 
