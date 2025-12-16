@@ -8,6 +8,15 @@ const placementData = [
     placed: 11,
     status: "Completed",
   },
+   {
+    company: "Go daddy",
+    type: "SLI",
+    roles: "SDE",
+    ctc: 46,
+    stipend: 50000,
+    placed: 2,
+    status: "Completed",
+  },
   {
     company: "Flexport",
     type: "SLI",
@@ -827,6 +836,20 @@ const changelogData = [
           { type: "completed", description: "Process completed successfully" },
         ],
       },
+      {
+        company: "Godaddy",
+        changes: [
+          { type: "new", description: "Company added to placement drive" },
+          { type: "update", description: "CTC offered", value: "46 LPA" },
+          {
+            type: "update",
+            description: "Students selected",
+            oldValue: 0,
+            newValue: 2,
+          },
+          { type: "completed", description: "Process completed successfully" },
+        ],
+      },
     ],
   },
 ];
@@ -941,4 +964,5 @@ btn.addEventListener("mouseleave", function () {
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
 
