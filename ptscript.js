@@ -157,7 +157,7 @@ const placementData = [
     company: "ShodhAI",
     type: "SLI + FTE",
     roles: "ML, Fullstack, SRE",
-    ctc: 12.0,
+    ctc: 15.0,
     stipend: 15000,
     placed: 4,
     status: "Completed",
@@ -465,14 +465,14 @@ const placementData = [
     roles: "R & D",
     ctc: 15.5,
     stipend: 50000,
-    placed: 8,
+    placed: 9,
     status: "Completed",
   },
   {
     company: "Media.net",
     type: "SLI",
     roles: "SRE",
-    ctc: 15.7,
+    ctc: 14.5,
     stipend: 100000,
     placed: 1,
     status: "completed",
@@ -820,7 +820,7 @@ document.getElementById("sortSelect").addEventListener("change", filterAndSort);
 // changing array
 const changelogData = [
   {
-    date: "2024-12-17",
+    date: "2024-12-16",
     entries: [
       {
         company: "Flexport",
@@ -846,6 +846,48 @@ const changelogData = [
             description: "Students selected",
             oldValue: 0,
             newValue: 2,
+          },
+          { type: "completed", description: "Process completed successfully" },
+        ],
+      },
+      {
+        company: "Shodh AI",
+        changes: [
+         
+          
+          {
+            type: "update",
+            description: "CTC update",
+            oldValue: 12,
+            newValue: 15,
+          },
+          { type: "completed", description: "Process completed successfully" },
+        ],
+      },
+      {
+        company: "media.net SRE",
+        changes: [
+         
+          
+          {
+            type: "update",
+            description: "CTC update",
+            oldValue: 15.7,
+            newValue: 14.5,
+          },
+          { type: "completed", description: "Process completed successfully" },
+        ],
+      },
+      {
+        company: "Samsung delhi",
+        changes: [
+         
+          
+          {
+            type: "update",
+            description: "students selected",
+            oldValue: 8,
+            newValue: 9,
           },
           { type: "completed", description: "Process completed successfully" },
         ],
@@ -972,6 +1014,7 @@ btn.addEventListener("mouseleave", function () {
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
 
 
 
