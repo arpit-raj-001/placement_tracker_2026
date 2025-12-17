@@ -8,6 +8,15 @@ const placementData = [
     placed: 11,
     status: "Completed",
   },
+  {
+    company: "Procmart",
+    type: "SLI",
+    roles: "product analyst intern",
+    ctc: 6.0,
+    stipend: 20000,
+    placed: 1,
+    status: "Completed",
+  },
    {
     company: "Go daddy",
     type: "SLI",
@@ -1005,6 +1014,7 @@ btn.addEventListener("mouseleave", function () {
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
 
 
 
