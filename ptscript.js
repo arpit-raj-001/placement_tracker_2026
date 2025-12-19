@@ -9,6 +9,15 @@ const placementData = [
     status: "Completed",
   },
   {
+    company: "hero vired",
+    type: "FTE",
+    roles: "Data engineer,full stack",
+    ctc: 8.5,
+    stipend: 0,
+    placed: 4,
+    status: "Completed",
+  },
+  {
     company: "Procmart",
     type: "SLI",
     roles: "product analyst intern",
@@ -809,6 +818,20 @@ const changelogData = [
     date: "2024-12-16",
     entries: [
       {
+        company: "hero vired",
+        changes: [
+          { type: "new", description: "Company added to placement drive" },
+          { type: "update", description: "CTC offered", value: "7.5 to 8.5 LPA" },
+          {
+            type: "update",
+            description: "Students selected",
+            oldValue: 0,
+            newValue: 4,
+          },
+          { type: "completed", description: "Process completed successfully" },
+        ],
+      },
+      {
         company: "Flexport",
         changes: [
           { type: "new", description: "Company added to placement drive" },
@@ -900,6 +923,7 @@ const changelogData = [
           { type: "completed", description: "Process completed successfully" },
         ],
       },
+      
     ],
   },
 ];
@@ -1014,6 +1038,7 @@ btn.addEventListener("mouseleave", function () {
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
 
 
 
