@@ -13,7 +13,7 @@ const placementData = [
     type: "FTE",
     roles: "Data engineer,full stack",
     ctc: 8.5,
-    stipend: 0,
+    stipend: 30000,
     placed: 4,
     status: "Completed",
   },
@@ -521,6 +521,60 @@ const placementData = [
     roles: "Data Solutions Associate Intern",
     ctc: 8.5,
     stipend: 35000,
+    placed: 6,
+    status: "Completed",
+  },
+  {
+    company: "truestate",
+    type: "SLI",
+    roles: "intern",
+    ctc: 12.0,
+    stipend: 40000,
+    placed: 0,
+    status: "Pending",
+  },
+  {
+    company: "evigway technologies",
+    type: "SLI+FTE",
+    roles: "SDE INTERN",
+    ctc: 8.0,
+    stipend: 40000,
+    placed: 0,
+    status: "Pending",
+  },
+  {
+    company: "signzy",
+    type: "SLI+FTE",
+    roles: "frontend developer",
+    ctc: 10.0,
+    stipend: 40000,
+    placed: 0,
+    status: "Pending",
+  },
+  {
+    company: "OTSI",
+    type: "SLI+FTE",
+    roles: "full stack developer",
+    ctc: 12.0,
+    stipend: 25000,
+    placed: 0,
+    status: "Pending",
+  },
+   {
+    company: "Evam labs",
+    type: "SLI+FTE",
+    roles: "various roles",
+    ctc: 10.0,
+    stipend: 35000,
+    placed: 0,
+    status: "Pending",
+  },
+  {
+    company: "truestate",
+    type: "Intern",
+    roles: "Data Solutions Associate Intern",
+    ctc: 12.0,
+    stipend: 40000,
     placed: 0,
     status: "Pending",
   },
@@ -820,13 +874,27 @@ const changelogData = [
       {
         company: "hero vired",
         changes: [
-          { type: "new", description: "Company added to placement drive" },
-          { type: "update", description: "CTC offered", value: "7.5 to 8.5 LPA" },
+          { type: "new", description: "Company completed its placement drive" },
+          { type: "update", description: "CTC offered", value: "8.5 LPA" },
           {
             type: "update",
             description: "Students selected",
             oldValue: 0,
             newValue: 4,
+          },
+          { type: "completed", description: "Process completed successfully" },
+        ],
+      },
+      {
+        company: "eucloid",
+        changes: [
+          { type: "update", description: "Completed the placement drive" },
+          { type: "update", description: "CTC offered", value: "8.5 LPA" },
+          {
+            type: "update",
+            description: "Students selected",
+            oldValue: 0,
+            newValue: 6,
           },
           { type: "completed", description: "Process completed successfully" },
         ],
@@ -1045,6 +1113,7 @@ btn.addEventListener("mouseleave", function () {
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
 
 
 
