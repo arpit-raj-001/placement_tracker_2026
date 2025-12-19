@@ -815,6 +815,24 @@ document.getElementById("sortSelect").addEventListener("change", filterAndSort);
 // changing array
 const changelogData = [
   {
+    date: "2024-12-19",
+    entries: [
+      {
+        company: "hero vired",
+        changes: [
+          { type: "new", description: "Company added to placement drive" },
+          { type: "update", description: "CTC offered", value: "7.5 to 8.5 LPA" },
+          {
+            type: "update",
+            description: "Students selected",
+            oldValue: 0,
+            newValue: 4,
+          },
+          { type: "completed", description: "Process completed successfully" },
+        ],
+      },
+      ],
+  {
     date: "2024-12-16",
     entries: [
       
@@ -913,24 +931,7 @@ const changelogData = [
       
     ],
   },
-  {
-    date: "2024-12-19",
-    entries: [
-      {
-        company: "hero vired",
-        changes: [
-          { type: "new", description: "Company added to placement drive" },
-          { type: "update", description: "CTC offered", value: "7.5 to 8.5 LPA" },
-          {
-            type: "update",
-            description: "Students selected",
-            oldValue: 0,
-            newValue: 4,
-          },
-          { type: "completed", description: "Process completed successfully" },
-        ],
-      },
-      ],
+  
   },
 ];
 
@@ -1044,6 +1045,7 @@ btn.addEventListener("mouseleave", function () {
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
 
 
 
