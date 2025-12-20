@@ -87,7 +87,7 @@ const placementData = [
     roles: "NLP intern",
     ctc: 12,
     stipend: 40000,
-    placed: 11,
+    placed: 3,
     status: "Completed",
   },
   {
@@ -1113,6 +1113,7 @@ btn.addEventListener("mouseleave", function () {
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
 
 
 
