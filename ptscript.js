@@ -530,8 +530,8 @@ const placementData = [
     roles: "intern",
     ctc: 12.0,
     stipend: 40000,
-    placed: 0,
-    status: "Pending",
+    placed: 4,
+    status: "Completed",
   },
   {
     company: "evigway technologies",
@@ -644,16 +644,16 @@ const placementData = [
     status: "Completed",
   },
   {
-    company: "BTC",
+    company: "Bot consulting",
     type: "SLI + FTE",
-    roles: "not known yet",
+    roles: " ",
     ctc: 12.0,
     stipend: 35000,
     placed: 1,
     status: "Completed",
   },
   {
-    company: "BTC",
+    company: "Bot consulting",
     type: "SLI + FTE",
     roles: "AI engineer",
     ctc: 7.21,
@@ -1113,6 +1113,7 @@ btn.addEventListener("mouseleave", function () {
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
 
 
 
