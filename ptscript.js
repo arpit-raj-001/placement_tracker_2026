@@ -713,7 +713,7 @@ function calculateStats() {
   securedCtcArray.sort((a, b) => a - b);
 
   const midSecured = Math.floor(securedCtcArray.length / 2);
-  const medianCtcSecured =
+  const medianCtcSecured =    
     securedCtcArray.length % 2 === 0
       ? (securedCtcArray[midSecured - 1] + securedCtcArray[midSecured]) / 2
       : securedCtcArray[midSecured];
@@ -884,7 +884,8 @@ const changelogData = [
           },
           { type: "completed", description: "Process completed successfully" },
         ],
-      
+      },
+    ],
   },
   {
     date: "2024-12-19",
@@ -917,12 +918,11 @@ const changelogData = [
           { type: "completed", description: "Process completed successfully" },
         ],
       },
-      ],
+    ],
   },
   {
     date: "2024-12-16",
     entries: [
-      
       {
         company: "Flexport",
         changes: [
@@ -954,8 +954,6 @@ const changelogData = [
       {
         company: "Shodh AI",
         changes: [
-         
-          
           {
             type: "update",
             description: "CTC update",
@@ -968,8 +966,6 @@ const changelogData = [
       {
         company: "media.net SRE",
         changes: [
-         
-          
           {
             type: "update",
             description: "CTC update",
@@ -982,8 +978,6 @@ const changelogData = [
       {
         company: "Samsung delhi",
         changes: [
-         
-          
           {
             type: "update",
             description: "students selected",
@@ -997,15 +991,11 @@ const changelogData = [
         company: "Blogvault",
         changes: [
           { type: "new", description: "company blacklisted us" },
-          
-          
         ],
       },
       {
         company: "DELOITTE",
         changes: [
-         
-          
           {
             type: "update",
             description: "students selected",
@@ -1015,11 +1005,10 @@ const changelogData = [
           { type: "completed", description: "Process completed successfully" },
         ],
       },
-      
     ],
   },
-  
 ];
+
 
 // Changelog rendering function
 function renderChangelog() {
@@ -1131,6 +1120,7 @@ btn.addEventListener("mouseleave", function () {
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
 
 
 
