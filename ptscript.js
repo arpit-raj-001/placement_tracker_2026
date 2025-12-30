@@ -884,7 +884,7 @@ const changelogData = [
           },
           { type: "completed", description: "Process completed successfully" },
         ],
-      }
+      
   },
   {
     date: "2024-12-19",
@@ -1131,6 +1131,7 @@ btn.addEventListener("mouseleave", function () {
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
 
 
 
