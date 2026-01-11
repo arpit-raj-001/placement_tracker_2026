@@ -78,8 +78,8 @@ const placementData = [
     roles: "SWE",
     ctc: 15,
     stipend: 30000,
-    placed: 0,
-    status: "Pending",
+    placed: 5,
+    status: "Completed",
   },
   {
     company: "serent corporation",
@@ -1120,6 +1120,7 @@ btn.addEventListener("mouseleave", function () {
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
 
 
 
