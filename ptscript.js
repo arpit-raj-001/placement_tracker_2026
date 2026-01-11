@@ -557,8 +557,8 @@ const placementData = [
     roles: "full stack developer",
     ctc: 12.0,
     stipend: 25000,
-    placed: 0,
-    status: "Pending",
+    placed: 1,
+    status: "Completed",
   },
    {
     company: "Evam labs",
@@ -569,15 +569,7 @@ const placementData = [
     placed: 0,
     status: "Pending",
   },
-  {
-    company: "truestate",
-    type: "Intern",
-    roles: "Data Solutions Associate Intern",
-    ctc: 12.0,
-    stipend: 40000,
-    placed: 0,
-    status: "Pending",
-  },
+ 
   {
     company: "ION",
     type: "FTE",
@@ -1120,6 +1112,7 @@ btn.addEventListener("mouseleave", function () {
 placementData.sort((a, b) => b.ctc - a.ctc);
 renderTable(placementData);
 updateDashboard();
+
 
 
 
