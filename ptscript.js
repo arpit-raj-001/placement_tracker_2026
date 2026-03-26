@@ -141,8 +141,8 @@ const placementData = [
     roles: "SDET",
     ctc: 12,
     stipend: 50000,
-    placed: 0,
-    status: "Pending",
+    placed: 13,
+    status: "Completed",
   },
   {
     company: "mamaearth",
@@ -973,10 +973,10 @@ function updateDashboard() {
     (sum, item) => sum + item.placed,
     0
   );
-  const placementPercentage = (((totalPlaced +28) / 490) * 100).toFixed(2);
+  const placementPercentage = (((totalPlaced +62) / 490) * 100).toFixed(2);
 
   document.getElementById("studentsPlaced").textContent = `${
-    totalPlaced + 28
+    totalPlaced + 62
   } / 490`;
   document.getElementById(
     "placementRate"
